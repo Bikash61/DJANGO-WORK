@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .form-container, .tracker-container, .quote-container {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+        .tracker-container {
+            display: flex;
+            flex-direction: column;
+        }
+        .tracker-container select {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .quote-container {
+            text-align: center;
+        }
+        .quote-container blockquote {
+            font-style: italic;
+            margin: 20px 0;
+            padding: 20px;
+            border-left: 5px solid #4CAF50;
+            background: #fff;
+        }
+        .quote-container button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .quote-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mental Health App</h1>
+    </header>
+
+    <div class="container">
+        <!-- Contact Form -->
+        <div class="form-container">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="formResponse" style="margin-top: 10px;"></div>
+        </div>
+
+        <!-- Mood Tracker -->
+        <div class="tracker-container">
+            <h2>Mood Tracker</h2>
+            <select id="moodSelect">
+                <option value="">Select your mood</option>
+                <option value="happy">Happy</option>
+                <option value="sad">Sad</option>
+                <option value="angry">Angry</option>
+                <option value="anxious">Anxious</option>
+                <option value="relaxed">Relaxed</option>
+            </select>
+            <div id="moodMessage" style="margin-top: 10px;"></div>
+        </div>
+
+        <!-- Motivational Quotes -->
+        <div class="quote-container">
+            <h2>Motivational Quote</h2>
+            <blockquote id="quote">Click the button to get a new motivational quote.</blockquote>
+            <button onclick="fetchQuote()">Get Quote</button>
+        </div>
+    </div>
+
+    <script>
+        // Contact Form Handler
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple form validation
+            if (name && email && message) {
+                document.getElementById('formResponse').innerHTML = `<p>Thank you, ${name}! Your message has been sent.</p>`;
+                document.getElementById('contactForm').reset();
+            } else {
+                document.getElementById('formResponse').innerHTML = `<p>Please fill in all fields.</p>`;
+            }
+        });
+
+        // Mood Tracker Handler
+        document.getElementById('moodSelect').addEventListener('change', function() {
+            const mood = this.value;
+            const moodMessages = {
+                happy: 'Great to hear that you are feeling happy!',
+                sad: 'It’s okay to feel sad sometimes. Take care of yourself.',
+                angry: 'Try to take some deep breaths and calm down.',
+                anxious: 'Remember to take things one step at a time.',
+                relaxed: 'Keep up the relaxed vibe! You’re doing great.',
+            };
+            document.getElementById('moodMessage').innerHTML = moodMessages[mood] || '';
+        });
+
+        // Fetch Motivational Quote
+        function fetchQuote() {
+            const quotes = [
+                "The only way to do great work is to love what you do. - Steve Jobs",
+                "You miss 100% of the shots you don’t take. - Wayne Gretzky",
+                "The best way to predict the future is to invent it. - Alan Kay",
+                "You are never too old to set another goal or to dream a new dream. - C.S. Lewis",
+                "Believe you can and you're halfway there. - Theodore Roosevelt"
+            ];
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById('quote').textContent = randomQuote;
+        }
+    </script>
+</body>
+</html>
+

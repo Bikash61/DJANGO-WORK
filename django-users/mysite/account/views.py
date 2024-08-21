@@ -1,7 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
-# account/views.py
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
@@ -11,7 +8,7 @@ from .forms import UserRegisterForm
 class RegisterView(CreateView):
     form_class = UserRegisterForm
     template_name = 'account/register.html'
-    success_url = reverse_lazy('account:login')
+    success_url = reverse_lazy('home')
 
     def form_valid(self, form):
         form.save()

@@ -1,3 +1,4 @@
+{% load static %}
 <!-- Details Lightbox -->
         <!-- Lightbox -->
         <div id="details-lightbox" class="lightbox-basic zoom-anim-dialog mfp-hide">
@@ -5,7 +6,7 @@
                 <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
                 <div class="col-lg-8">
                     <div class="image-container">
-                        <img class="img-fluid" src="images/details-lightbox.jpg" alt="alternative">
+                        <img class="img-fluid" src=" {% static 'images/details-lightbox.jpg' %}"alt="alternative">
                     </div> <!-- end of image-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-4">
@@ -31,7 +32,7 @@
                             <i class="fas fa-chevron-right"></i><div class="media-body">Purus semper eget duis at tellus at</div>
                         </li>
                     </ul>
-                    <a class="btn-solid-reg mfp-close page-scroll" href="sign-up.html">Sign Up</a> <button class="btn-outline-reg mfp-close as-button" type="button">Back</button>
+                    <a class="btn-solid-reg mfp-close page-scroll" href="/signup">Sign Up</a> <button class="btn-outline-reg mfp-close as-button" type="button">Back</button>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
         </div> <!-- end of lightbox-basic -->

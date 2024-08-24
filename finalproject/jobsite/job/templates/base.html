@@ -1,0 +1,50 @@
+{% load static%}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+       
+        <meta name="description" content="{{ description|default:'Your description' }}">
+        <meta name="author" content="{{ author|default:'Your name' }}">
+
+  
+        <meta property="og:site_name" content="{{ site_name|default:'' }}" /> <!-- website name -->
+        <meta property="og:site" content="{{ site_url|default:'' }}" /> <!-- website link -->
+        <meta property="og:title" content="{{ title|default:'' }}" /> <!-- title shown in the actual shared post -->
+        <meta property="og:description" content="{{ og_description|default:'' }}" /> <!-- description shown in the actual shared post -->
+        <meta property="og:image" content="{{ og_image|default:'' }}" /> <!-- image link -->
+        <meta property="og:url" content="{{ og_url|default:'' }}" /> 
+        <meta name="twitter:card" content="summary_large_image">
+        <title>{{ title|default:'Webpage Title' }}</title>
+        
+        <!-- Styles -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+        <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+        <link href="{% static 'css/fontawesome-all.css' %}" rel="stylesheet">
+        <link href="{% static 'css/swiper.css' %}" rel="stylesheet">
+        <link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    </head>
+
+
+<body data-spy="scroll" data-target=".fixed-top">
+    {% include "include/base/nav.html" %}
+    {% include "include/base/header.html" %}
+    {% include "include/base/consumer-slider.html" %}
+    {% include "include/base/introduction.html" %}
+    {% include "include/base/feature.html" %}
+    {% include "include/base/details1.html" %}
+
+       
+
+<script src="{% static 'js/jquery.min.js' %}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script> <!-- Bootstrap framework -->
+<script src="{% static 'js/jquery.easing.min.js' %}"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+<script src="{% static 'js/jquery.magnific-popup.js' %}"></script> <!-- Magnific Popup for lightboxes -->
+<script src="{% static 'js/swiper.min.js' %}"></script> <!-- Swiper for image and text sliders -->
+<script src="{% static 'js/scripts.js' %}"></script> <!-- Custom scripts -->
+
+</body>
+
+</html>

@@ -30,13 +30,7 @@
 
 <body data-spy="scroll" data-target=".fixed-top">
     {% include "include/base/nav.html" %}
-    {% include "include/base/header.html" %}
-    {% include "include/base/consumer-slider.html" %}
-    {% include "include/base/introduction.html" %}
-    {% include "include/base/feature.html" %}
-    {% include "include/base/details1.html" %}
-
-       
+    {% block content %}{% endblock content %}
 
 <script src="{% static 'js/jquery.min.js' %}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
 <script src="{% static 'js/bootstrap.min.js' %}"></script> <!-- Bootstrap framework -->

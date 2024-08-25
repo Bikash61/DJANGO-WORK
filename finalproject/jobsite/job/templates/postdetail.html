@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div id="post-details" class="basic-2">
+    <div class="container">
+        <!-- Post Title and Introduction -->
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="intro">
+                    <h2>{{ post.title }}</h2>
+                    <p>{{ post.introduction }}</p>
+                </div> <!-- end of intro -->
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+
+        <!-- Post Content and Image -->
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="image-container">
+                    <img class="img-fluid" src="{{ post.image.url }}" alt="Post Image">
+                </div> <!-- end of image-container -->
+            </div> <!-- end of col -->
+            <div class="col-lg-5">
+                <div class="text-container">
+                    <div class="section-title">Overview</div>
+                    <h2>{{ post.title }}</h2>
+                    <p>{{ post.content }}</p>
+                </div> <!-- end of text-container -->
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+
+        <!-- Additional Post Information -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-container">
+                    <div class="section-title">Additional Information</div>
+                    <p>{{ post.additional_info }}</p>
+                </div> <!-- end of text-container -->
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+
+    </div> <!-- end of container -->
+</div> <!-- end of basic-2 -->
+{% endblock content %}

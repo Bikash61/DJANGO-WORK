@@ -23,3 +23,5 @@ def postdetail(request):
 
 def internship(request):
     return render(request, 'internshiplist.html', {"internship": Internship.objects.all()})
+def profile(request):
+    return render(request, 'profile.html')

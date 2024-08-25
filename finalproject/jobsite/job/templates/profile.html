@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div id="profile-section" class="basic-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <img class="card-img-top img-fluid rounded-circle" src="{% static 'images/introduction.jpg' %}" alt="Profile Picture" width="10" height="10">
+                    
+                    <div class="card-body text-center">
+                        <h3 class="card-title">{{ user.first_name }} {{ user.last_name }}</h3>
+                        <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+                        <p class="card-text"><strong>Username:</strong> {{ user.username }}</p>
+                        <p class="card-text"><strong>Bio:</strong> {{ user.profile.bio }}</p>
+                        <a href="#" class="btn btn-primary">Edit Profile</a>
+                    </div>
+                </div>
+            </div> <!-- end of col -->
+
+            <div class="col-lg-8 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Profile Details</h4>
+                        <p><strong>Full Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+                        <p><strong>Email:</strong> {{ user.email }}</p>
+                        <p><strong>Username:</strong> {{ user.username }}</p>
+                        <p><strong>Joined On:</strong> {{ user.date_joined|date:"F j, Y" }}</p>
+                        <p><strong>Bio:</strong></p>
+                        <p>{{ user.profile.bio }}</p>
+                        <h5 class="mt-4">Recent Activities</h5>
+                        <ul>
+                            {% for activity in user.profile.recent_activities %}
+                                <li>{{ activity }}</li>
+                            {% empty %}
+                                <li>No recent activities.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div> <!-- end of basic-2 -->
+<!-- end of profile-section -->
+
+{% endblock content %}

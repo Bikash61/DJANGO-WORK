@@ -1,19 +1,46 @@
-{% load static%}        
-        <!-- Introduction -->
-        <div id="intro" class="basic-1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <img class="img-fluid" src="{% static 'images/introduction.jpg' %}"alt="alternative">
-                    </div> <!-- end of col -->
-                    <div class="col-lg-5">
-                        <div class="text-container">
-                            <h2>Adipiscing elit duis tristi quesolli citudin nibro</h2>
-                            <p>In nulla posuere sollicitudin aliquam ultrices sagittis. Id fauc ibus nisl tincidunt eget nullam non nisi. Cursus in hac habi tasse platea dictumst quisque sagittis purus. Mi proin se dlibero enim sed. Consectetur adipiscing elit sena</p>
-                            <a class="btn-solid-reg" href="/signup">Sign up</a>
-                        </div> <!-- end of text-container -->
-                    </div> <!-- end of col -->
-                </div> <!-- end of row -->
-            </div> <!-- end of container -->
-        </div> <!-- end of basic-1 -->
-        <!-- end of introduction -->
+{% load static%} 
+
+<!-- Blog Cards -->
+<div id="blog-cards" class="basic-1">
+    <div class="container">
+        <div class="row">
+            <!-- Blog Card 1 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="{% static 'images/introduction.jpg' %}" alt="Blog Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Adipiscing elit duis tristi quesolli citudin nibro</h5>
+                        <p class="card-text">In nulla posuere sollicitudin aliquam ultrices sagittis. Id fauc ibus nisl tincidunt eget nullam non nisi. Cursus in hac habi tasse platea dictumst quisque sagittis purus. Mi proin se dlibero enim sed. Consectetur adipiscing elit sena</p>
+                        <a href="/signup" class="btn btn-solid-reg">Read More</a>
+                    </div>
+                </div>
+            </div> <!-- end of col -->
+
+            <!-- Blog Card 2 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="{% static 'images/introduction.jpg' %}" alt="Blog Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Another blog title here</h5>
+                        <p class="card-text">Short description of this blog. Keep it concise but engaging to encourage users to click through and read more.</p>
+                        <a href="/signup" class="btn btn-solid-reg">Read More</a>
+                    </div>
+                </div>
+            </div> <!-- end of col -->
+
+            <!-- Blog Card 3 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="{% static 'images/introduction.jpg' %}" alt="Blog Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Yet another blog title</h5>
+                        <p class="card-text">Briefly describe the content of this blog post. Use engaging text that provides value to your readers.</p>
+                        <a href="/signup" class="btn btn-solid-reg">Read More</a>
+                    </div>
+                </div>
+            </div> <!-- end of col -->
+
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div> <!-- end of basic-1 -->
+<!-- end of blog-cards -->

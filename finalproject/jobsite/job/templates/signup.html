@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% block content %}
+<form id="signUpForm">
+    <div class="form-group">
+        <input type="email" class="form-control-input" id="email" required>
+        <label class="label-control" for="email">Email</label>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control-input" id="name" required>
+        <label class="label-control" for="name">Name</label>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control-input" id="password" required>
+        <label class="label-control" for="password">Password</label>
+    </div>
+    <div class="form-group checkbox">
+        <input type="checkbox" id="terms" value="Agreed-to-Terms" required>Turpis tincidunt id aliquet ri <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms & Conditions</a>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="form-control-submit-button">Sign Up</button>
+    </div>
+</form>
+{% endblock%}

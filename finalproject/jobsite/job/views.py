@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Job, Internship
+from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
@@ -12,7 +13,7 @@ def signup(request):
     return render(request, 'sign-up.html')
 
 def home(request):
-    return render(request, 'index.html', {'post' : Job.objects.all()})
+    return render(request, 'index.html', {'post' : Job.objects.all(), "internship": Internship.objects.all()})
 
 
 def joblist(request):
@@ -23,5 +24,8 @@ def postdetail(request):
 
 def internship(request):
     return render(request, 'internshiplist.html', {"internship": Internship.objects.all()})
-def profile(request):
-    return render(request, 'profile.html')
+
+    
+def profile(request, post_id =1):
+    user = get_object_or_404(User, id=post_id)
+    return render(request, 'profile.html', {"user": user})

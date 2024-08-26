@@ -2,29 +2,5 @@
 {% load static %}
 
 {% block content%}
-
-
-
-<div id="blog-cards" class="basic-1">
-    <div class="container">
-        <div class="row">
-            <h1>Welcome to the current opening of Jobs</h1>
-            <!-- Blog Card 1 -->
-          {% for post in post%}
-            <div class="col-lg-4 col-md-6">
-                <div class="card">
-                    <img class="card-img-top img-fluid" src="{{ post.image.url }}" width="80" height="160" alt="Blog Image">
-
-                    <div class="card-body">
-                        <h5 class="card-title">{{ post.title}}</h5>
-                        <p class="card-text">{{ post.shortdescription }}</p>
-                        <a href="/postdetail" class="btn btn-solid-reg">Read More</a>
-                    </div>
-                </div>
-            </div> <!-- end of col -->
-            {% endfor %}
-        </div> <!-- end of row -->
-    </div> <!-- end of container -->
-</div> <!-- end of basic-1 -->
-<!-- end of blog-cards -->
+    {% include "include/base/joblist.html" %}
 {% endblock content %}

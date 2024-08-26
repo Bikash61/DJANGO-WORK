@@ -3,39 +3,14 @@
 {% block content %}
      {% include "include/base/header.html" %}
      {% include "include/base/consumer-slider.html" %}
-     {% load static%} 
+     {% include "include/base/joblist.html" %}
+     {% include "include/base/internshiplist.html" %}
 
-<!-- Blog Cards -->
-<div id="blog-cards" class="basic-1">
-    <div class="container">
-        <div class="row">
-            <!-- Blog Card 1 -->
-          {% for post in post%}
-            <div class="col-lg-4 col-md-6">
-                <div class="card">
-                    <img class="card-img-top img-fluid" src="{{ post.image.url }}" width="100" height="200" alt="Blog Image">
 
-                    <div class="card-body">
-                        <h5 class="card-title">{{ post.title}}</h5>
-                        <p class="card-text">{{ post.shortdescription }}</p>
-                        <a href="/post_detail" class="btn btn-solid-reg">Read More</a>
-                    </div>
-                </div>
-            </div> <!-- end of col -->
-            {% endfor %}
-        </div> <!-- end of row -->
-    </div> <!-- end of container -->
-</div> <!-- end of basic-1 -->
-<!-- end of blog-cards -->
-
-     {% include "include/base/feature.html" %}
+     {% comment %} {% include "include/base/feature.html" %} {% endcomment %}
      {% include "include/base/testimonials.html" %}
      {% include "include/base/newsletter.html" %}
-     {% include 'joblist.html' %}
-     {% include 'internshiplist.html' %}
-
-
-
+     
      {% include "include/base/footer.html" %}
      {% include "include/base/copyright.html" %}
      {% include "include/base/scripts.html" %}    

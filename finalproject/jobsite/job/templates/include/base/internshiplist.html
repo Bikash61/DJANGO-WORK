@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div id="internship-cards" class="basic-1">
+    <div class="container">
+        <div class="row">
+            <h1>Explore Our Current Internship Opportunities</h1>
+            <!-- Internship Card 1 -->
+            {% for internship in internship %}
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="{{ internship.image.url }}" width="80" height="160" alt="Internship Image">
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ internship.title }}</h5>
+                        <p class="card-text">{{ internship.shortdescription }}</p>
+                        
+                    </div>
+                </div>
+            </div> <!-- end of col -->
+            {% endfor %}
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div> <!-- end of basic-1 -->
+<!-- end of internship-cards -->
+
+{% endblock content %}

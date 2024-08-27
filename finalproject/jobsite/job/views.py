@@ -28,7 +28,7 @@ def internship(request):
     return render(request, 'internshiplist.html', {"internship": Internship.objects.all()})
 
     
-def profile(request, post_id =1):
+def profile(request, post_id=1):
     user = get_object_or_404(User, id=post_id)
     return render(request, 'profile.html', {"user": user})
 

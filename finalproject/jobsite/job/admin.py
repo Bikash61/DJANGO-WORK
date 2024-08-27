@@ -5,4 +5,5 @@ from .models import Job, Internship
 @admin.register(Job)
 class JobAdmin(admin.ModelAdmin):
     list_display = ('title', 'shortdescription', 'location', 'created_at')
+    
 admin.site.register(Internship)

@@ -12,7 +12,7 @@ urlpatterns = [
     path('internship/',views.internship, name = 'internship'),
     path('profile/', views.profile, name = 'profile'),
     path('login/', views.login, name='login'),
-    path('register/', views.register, name='register'),
+    path('signup/', views.register, name='signup'),
     
 ]
 if settings.DEBUG:

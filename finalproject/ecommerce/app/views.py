@@ -2,4 +2,4 @@ from django.shortcuts import render
 
 # Create your views here.
 def home(request):
-    return render("Welcome to my E-commerce app")
+    return render(request, 'app/index.html')

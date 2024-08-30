@@ -12,7 +12,7 @@
 </head>
 <body>
   
-  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-success">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img src="{% static 'app/images/products/Neel.png' %}" alt="Logo" width="70" height="50"/>
@@ -30,14 +30,14 @@
               Products
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Milk</a></li>
-              <li><a class="dropdown-item" href="#">Curd</a></li>
-              <li><a class="dropdown-item" href="#">MilkShake</a></li>
-              <li><a class="dropdown-item" href="#">Lassi</a></li>
-              <li><a class="dropdown-item" href="#">Ghee</a></li>
-              <li><a class="dropdown-item" href="#">Paneer</a></li>
-              <li><a class="dropdown-item" href="#">Cheese</a></li>
-              <li><a class="dropdown-item" href="#">Ice-Creams</a></li>  
+              <li><a class="dropdown-item" href="{% url 'category' 'ML' %}">Milk</a></li>
+              <li><a class="dropdown-item" href="{% url 'category' 'CR' %}">Curd</a></li>
+              <li><a class="dropdown-item" href="{% url 'category' 'MS' %}">MilkShake</a></li>
+              <li><a class="dropdown-item" href="{% url 'category' 'LS' %}">Lassi</a></li>
+              <li><a class="dropdown-item" href="{% url 'category' 'GH' %}">Ghee</a></li>
+              <li><a class="dropdown-item" href="{% url 'category' 'PN' %}">Paneer</a></li>
+              <li><a class="dropdown-item" href="{% url 'category' 'CZ' %}">Cheese</a></li>
+              <li><a class="dropdown-item" href="{% url 'category' 'IC' %}">Ice-Creams</a></li>  
             </ul>
           </li>
           <li class="nav-item">

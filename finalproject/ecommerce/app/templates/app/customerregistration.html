@@ -3,25 +3,42 @@
 {% block title %}Customer Registration{% endblock title %}
 
 {% block main-content %}
-<div class = container>
-    <div class = 'row my-3'>
-     
-         <h3>Registration Form</h3>
+<div class="container">
+    <div class="row my-3">
+        <h3>Registration Form</h3>
         <br>
 
-         <form action = "" method = "post" novalidate class = "shadow p-5">
+        <form action="" method="post" novalidate class="shadow p-5">
             {% csrf_token %}
-            {% for fm in form %}
-              {{fm.label_tag}} {{fm}} <small class = "text-danger">{{fm.errors|striptags}}</small>
-              <br>
+            {% for field in form %}
+                <div class="mb-3">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    <small class="text-danger">{{ field.errors|striptags }}</small>
+                </div>
             {% endfor %}
-            <input type = 'submit' value = 'Submit' class = 'btn btn-primary'> <br>
+            <input type="submit" value="Submit" class="btn btn-primary"> <br>
 
-            <div class = "text-center text-primary fw-bold">
-                <small>Already have an Account? <a href = "#"
-                    class = "text-danger">Login Now </a> </small>
+            <div class="text-center text-primary fw-bold mt-3">
+                <small>Already have an Account? <a href="{% url 'login'%}" class="text-danger">Login Now</a></small>
             </div>
-          </from>
+
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger my-3">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if messages %}
+                {% for msg in messages %}
+                    <div class="alert alert-{{ msg.tags }}" role="alert">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </form>
     </div>
 </div>
 <br></br>

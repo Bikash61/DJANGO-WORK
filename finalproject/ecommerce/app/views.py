@@ -4,10 +4,16 @@ from django.views import View
 from django.http import HttpResponse
 from urllib import request
 from .models import Product
+from .forms import CustomerRegistrationForm
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
     return render(request, 'app/home.html')
+def about(request):
+    return render(request, 'app/about.html')
+def contact(request):
+    return render(request, 'app/contact.html')
 
 class CategoryView(View):
     def get(self, request, val):
@@ -26,3 +32,16 @@ class ProductDetail(View):
         product = Product.objects.get(pk=pk)
         return render(request, "app/productdetail.html", locals())
 
+class CustomerRegistrationView(View):
+    def get(self, request):
+        form = CustomerRegistrationForm()
+        return render(request, "app/customerregistration.html",locals())
+
+    def post(self, request):
+        form = CustomerRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.sucess(request, 'Congraluations! User Registered Sucessfully')
+        else:
+            messages.error(request, 'Invalid Input Data')
+            return render(request, "app/customerregistration.html",locals())

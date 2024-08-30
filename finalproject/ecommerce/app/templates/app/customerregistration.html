@@ -1,0 +1,28 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %}Customer Registration{% endblock title %}
+
+{% block main-content %}
+<div class = container>
+    <div class = 'row my-3'>
+     
+         <h3>Registration Form</h3>
+        <br>
+
+         <form action = "" method = "post" novalidate class = "shadow p-5">
+            {% csrf_token %}
+            {% for fm in form %}
+              {{fm.label_tag}} {{fm}} <small class = "text-danger">{{fm.errors|striptags}}</small>
+              <br>
+            {% endfor %}
+            <input type = 'submit' value = 'Submit' class = 'btn btn-primary'> <br>
+
+            <div class = "text-center text-primary fw-bold">
+                <small>Already have an Account? <a href = "#"
+                    class = "text-danger">Login Now </a> </small>
+            </div>
+          </from>
+    </div>
+</div>
+<br></br>
+{% endblock main-content %}

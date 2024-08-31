@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField,PasswordChangeForm
 from django.contrib.auth.models import User
+from .models import Customer
+
 
 
 class LoginForm(AuthenticationForm):
@@ -36,8 +38,21 @@ class CustomerRegistrationForm(UserCreationForm):
             raise forms.ValidationError("This email address is already in use.")
         return email
 
+class MyPasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(label = 'Old Password', widget = forms.PasswordInput(attrs={'autofocus':'True', 'autocomplete': 'current-password', 'class' : 'form-control'})),
+    new_password1 = forms.CharField(label = 'New Password', widget = forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class':'form-control'}))
+    new_password2 = forms.CharField(label = 'Confirm password', widget = forms.PasswordInput(attrs={'autocomplete': 'current-password', 'class':'form-control'}))
+
 class MyPasswordResetForm(PasswordChangeForm):
     pass
-
 class CustomerProfileForm(forms.ModelForm):
-    pass
+    class Meta:
+        model = Customer
+        fields = ['name', 'locality', 'city', 'state', 'zip_code']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Name'}),
+            'locality': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your locality'}),
+            'city': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your city'}),
+            'state': forms.Select(attrs={'class': 'form-control'}),
+            'zip_code': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your ZIP code'}),
+        }

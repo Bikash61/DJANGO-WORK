@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.db.models import Count
 from django.views import View
-from .models import Product
-from .forms import CustomerRegistrationForm
+from .models import Product, Customer
+from .forms import CustomerRegistrationForm , CustomerProfileForm 
 from django.contrib import messages
 
 # Function-based views
@@ -48,10 +48,39 @@ class CustomerRegistrationView(View):
             messages.warning(request, 'Invalid Input Data')
             return render(request, "app/customerregistration.html", {'form': form})
 
+
 class ProfileView(View):
     def get(self, request):
-        return render(request, 'app/profile.html', locals())
+        try:
+            customer = Customer.objects.get(user=request.user)
+            form = CustomerProfileForm(instance=customer)
+        except Customer.DoesNotExist:
+            form = CustomerProfileForm()  # or handle it differently
+        return render(request, 'app/profile.html', {'form': form})
 
     def post(self, request):
-        return render(request, 'app/profile.html', locals())
+        try:
+            customer = Customer.objects.get(user=request.user)
+            form = CustomerProfileForm(request.POST, instance=customer)
+        except Customer.DoesNotExist:
+            form = CustomerProfileForm(request.POST)
+            if form.is_valid():
+                # Manually set the user before saving
+                new_customer = form.save(commit=False)
+                new_customer.user = request.user
+                new_customer.save()
+                messages.success(request, 'Profile Created Successfully')
+                return redirect('profile')
         
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile Updated Successfully')
+            return redirect('profile')  # Redirect to avoid form resubmission
+        else:
+            messages.warning(request, 'Invalid Input Data')
+
+        return render(request, 'app/profile.html', {'form': form})
+
+def address(request):
+    add = Customer.objects.filter(user = request.user)
+    return render(request, 'app/address.html',locals())

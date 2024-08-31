@@ -1,0 +1,32 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %}Address{% endblock title %}
+
+{% block main-content %}
+<div class="container mt-5">
+    <h2 class="text-center">Your Addresses</h2>
+    
+    {% if add %}
+        <div class="list-group">
+            {% for customer in add %}
+                <div class="list-group-item">
+                    <h5 class="mb-1">Address Details</h5>
+                    <p class="mb-1"><strong>Name:</strong> {{ customer.name }}</p>
+                    <p class="mb-1"><strong>Locality:</strong> {{ customer.locality }}</p>
+                    <p class="mb-1"><strong>City:</strong> {{ customer.city }}</p>
+                    <p class="mb-1"><strong>State:</strong> {{ customer.state }}</p>
+                    <p class="mb-1"><strong>ZIP Code:</strong> {{ customer.zip_code }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            You have no addresses saved.
+        </div>
+    {% endif %}
+    
+    <div class="text-center mt-4">
+        <a href="{% url 'profile' %}" class="btn btn-primary">Edit Profile</a>
+    </div>
+</div>
+{% endblock main-content %}

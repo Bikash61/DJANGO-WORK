@@ -2,6 +2,18 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+
+CATEGORY_CHOICES = (
+    ('CR', 'Curd'),
+    ('ML', 'Milk'),
+    ('LS', 'Lassi'),
+    ('MS', 'Milkshake'),
+    ('PN', 'Paneer'),
+    ('GH', 'Ghee'),
+    ('CZ', 'Cheese'),
+    ('IC', 'Ice-Cream')
+    )
+
 STATE_CHOICES = [
     ('Andhra Pradesh', 'Andhra Pradesh'),
     ('Arunachal Pradesh', 'Arunachal Pradesh'),
@@ -41,16 +53,6 @@ STATE_CHOICES = [
     ('Jammu and Kashmir', 'Jammu and Kashmir'),
 ]
 
-CATEGORY_CHOICES = (
-    ('CR', 'Curd'),
-    ('ML', 'Milk'),
-    ('LS', 'Lassi'),
-    ('MS', 'Milkshake'),
-    ('PN', 'Paneer'),
-    ('GH', 'Ghee'),
-    ('CZ', 'Cheese'),
-    ('IC', 'Ice-Cream')
-    )
 class Product(models.Model):
     title = models.CharField(max_length=255)
     selling_price = models.FloatField()

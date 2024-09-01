@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.db.models import Count
 from django.views import View
-from .models import Product, Customer
+from .models import Product, Customer, Cart
 from .forms import CustomerRegistrationForm , CustomerProfileForm 
 from django.contrib import messages
-
+from django.urls import reverse
 # Function-based views
 def home(request):
     return render(request, 'app/home.html')
@@ -84,3 +84,23 @@ class ProfileView(View):
 def address(request):
     add = Customer.objects.filter(user = request.user)
     return render(request, 'app/address.html',locals())
+
+def add_to_cart(request):
+    user = request.user
+    product_id = request.GET.get('prod_id')
+    if product_id:
+        try:
+            product = Product.objects.get(id=product_id)
+            Cart(user=user, product=product).save()
+            messages.success(request, 'Product added to cart.')
+        except Product.DoesNotExist:
+            messages.error(request, 'Product not found.')
+    else:
+        messages.error(request, 'No product ID provided.')
+    return redirect('/cart')
+
+
+def show_cart(request):
+    user = request.user
+    cart = Cart.objects.filter(user = request.user)
+    return render(request, 'app/addtocar.html', locals())

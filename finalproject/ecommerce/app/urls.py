@@ -33,7 +33,13 @@ urlpatterns = [
     ), name='passwordchangedone'),
 path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
 
-#Passowrd Reset
+#Carts Urls 
+path('add-to-cart/', views.add_to_cart, name='add_to_cart'),
+path('cart/', views.show_cart, name='showcart'),
+path('checkout/', views.show_cart, name = 'checkout'),
+
+
+#Passoword Reset
 path('password-reset/', auth_view.PasswordResetView.as_view(template_name = 'app/password_reset.html', form_class= MyPasswordResetForm),name = 'password_reset'),
 path('password-reset/done', auth_view.PasswordResetDoneView.as_view(template_name = 'app/password_reset_done.html'),name = 'password_reset_done'),
 path('password-reset-confirm/<uidb64>/<token>/', auth_view.PasswordResetConfirmView.as_view(template_name = 'app/password_reset_confirm.html', form_class = MySetPasswordForm),name = 'password_reset_confirm'),

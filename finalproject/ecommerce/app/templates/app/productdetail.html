@@ -1,29 +1,32 @@
 {% extends "app/base.html" %}
-{% load static%}
+{% load static %}
 {% block title %}Category{% endblock title %}
 
 {% block main-content %}
 <div class="container">
-    <div class="row flex justify-content-between">
+    <div class="row justify-content-between">
         <div class="img2 col-lg mt-5">
-            <img src="{{ product.product_image.url }}" class = 'image col-xs-6 col-sm-12 col-lg-12 mt-3 text-sm-center w-100 h-75' alt="Category Image">
+            <img src="{{ product.product_image.url }}" class="image col-xs-6 col-sm-12 col-lg-12 mt-3 w-100 h-75" alt="Category Image">
         </div>
-        <div class= "productdetail col-lg-5">
-            <h1 style = "font-family: Georgia; font-size:50px;">{{product.title}}</h1>
-            <h5>Rs.{{product.discounted_price}}/-</h4>
-            <small class= "text-decoration-line-through text-muted fs-5"><del>Rs.{{product.selling_price}}/- </small></del>
-            <br><br><h4> Product Features </h4>
-            <ul class = "fs-5" style = "font-family: Rajdhani;">
-                <li>{{product.description}}</li>
+        <div class="productdetail col-lg-5">
+            <h1 style="font-family: Georgia; font-size:50px;">{{ product.title }}</h1>
+            <h5>Rs.{{ product.discounted_price }}/-</h5>
+            <small class="text-decoration-line-through text-muted fs-5"><del>Rs.{{ product.selling_price }}/-</del></small>
+            <br><br>
+            <h4>Product Features</h4>
+            <ul class="fs-5" style="font-family: Rajdhani;">
+                <li>{{ product.description }}</li>
             </ul>
-            <div class = "buttons row flex" style = "font-family: Rajdhani;">
-                <button type = "submit" class = "d-grid gap-2 btn1 btn btn-danger p-1 m-1 btn-lg text-decoration-none text-white">Add to Chart </button>
-                <div class = "btn btn-dark p-1 m-1 btn-lg"> <a href = "#" class = "text-decoration-none text-white">Buy Now</a></div>
+            <div class="buttons row" style="font-family: Rajdhani;">
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value="{{ product.id }}"/>
+                    <button type="submit" class="d-grid gap-2 btn1 btn btn-danger p-1 m-1 btn-lg text-decoration-none text-white">Add to Cart</button>
+                </form>
+                <div class="btn btn-dark p-1 m-1 btn-lg">
+                    <a href="{% url 'showcart' %}" class="text-decoration-none text-white">Buy Now</a>
+                </div>
             </div>
-
         </div>
     </div>
 </div>
-
-
-{% endblock main-content%}
+{% endblock main-content %}

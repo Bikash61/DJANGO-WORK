@@ -4,13 +4,13 @@
 
 {% block main-content %}
 <div class="container mt-5">
-    <h2 class="text-center">Your Addresses</h2>
+    <h2 class="text-center">My Details</h2>
     
     {% if add %}
         <div class="list-group">
             {% for customer in add %}
                 <div class="list-group-item">
-                    <h5 class="mb-1">Address Details</h5>
+                    <h5 class="mb-1">Here is Your Profile Details</h5>
                     <p class="mb-1"><strong>Name:</strong> {{ customer.name }}</p>
                     <p class="mb-1"><strong>Locality:</strong> {{ customer.locality }}</p>
                     <p class="mb-1"><strong>City:</strong> {{ customer.city }}</p>

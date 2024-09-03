@@ -103,4 +103,4 @@ def add_to_cart(request):
 def show_cart(request):
     user = request.user
     cart = Cart.objects.filter(user = request.user)
-    return render(request, 'app/addtocar.html', locals())
+    return render(request, 'app/addtocart.html', locals())

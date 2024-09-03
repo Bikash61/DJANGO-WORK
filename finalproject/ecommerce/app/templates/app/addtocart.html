@@ -4,8 +4,8 @@
 
 {% block main-content %}
 <div class="container my-5">
-    <div class="row">
-        {% if cart %}
+    {% if cart %}
+        <div class="row">
             <h1 class="text-center mb-5">Shopping Cart</h1>
             <div class="col-sm-8">
                 <div class="card">
@@ -52,11 +52,9 @@
                     </div>
                 </div>
             </div>
-        {% else %}
-            <h1 class="text-center mb-5">Cart is empty</h1>
         </div>
-    </div>
- {% endif%}
- {% endblock main-content %}
-
-
+    {% else %}
+        <h1 class="text-center mb-5">Cart is empty</h1>
+    {% endif %}
+</div>
+{% endblock main-content %}

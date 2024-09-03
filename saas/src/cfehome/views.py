@@ -7,20 +7,20 @@ this_dir = pathlib.Path(__file__).resolve().parent
 def home_page_view(request, *args, **kwargs):
     my_title = "My Page"
     my_context = {
-        'page_tile': my_title
+        'page_title': my_title
     }
     html_template = "home.html"
-    return render(request, html_template)
+    return render(request, html_template, my_context)
 
 
-def old_home_page_view(request, *args, **kwargs):
-    my_title = "My Page"
-    my_context = {
-        'page_tile': my_title
-    }
-    html_ = ""
+# def old_home_page_view(request, *args, **kwargs):
+#     my_title = "My Page"
+#     my_context = {
+#         'page_tile': my_title
+#     }
+#     html_ = ""
 
 
-    # html_file_path = this_dir/"home.html"
-    # html_ = html_file_path.read_text()
-    return HttpResponse(html_)
+#     # html_file_path = this_dir/"home.html"
+#     # html_ = html_file_path.read_text()
+#     return HttpResponse(html_)

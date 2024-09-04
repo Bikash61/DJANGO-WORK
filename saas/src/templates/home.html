@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
-<body>
-    <h1>{{page_title}} </h1>
-    <p> {{ request.user }} {{request.method}} {{ request.user.is_authenticated}}</p>
-</body>
-</html>
+{% extends "base.html" %}
+{% block head-title %}{{page_title}}- {{block.super}}{% endblock head-title %}
+{% block content %}
+<p>Hello Again</p>
+<h1>{{page_title}}</h1>
+{% include "snippets/welcome-user-msg.html" %}
+
+Page Vist : {{ pagevisit}}
+{{ queryset }}
+{% endblock content %}

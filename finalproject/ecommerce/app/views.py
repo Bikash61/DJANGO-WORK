@@ -5,6 +5,8 @@ from .models import Product, Customer, Cart
 from .forms import CustomerRegistrationForm , CustomerProfileForm 
 from django.contrib import messages
 from django.urls import reverse
+from django.db.models import Q
+from django.http import JsonResponse
 # Function-based views
 def home(request):
     return render(request, 'app/home.html')
@@ -103,4 +105,28 @@ def add_to_cart(request):
 def show_cart(request):
     user = request.user
     cart = Cart.objects.filter(user = request.user)
+    amount = 0
+    for p in cart:
+        value = p.quantity*p.product.discounted_price
+        amount = amount+value
+    totalamount = amount + 40
     return render(request, 'app/addtocart.html', locals())
+
+def plus_cart(request):
+    if request.method == 'GET':
+        prod_id = request.GET('prod_id')
+        c = cart.objects.get(Q(product = prod_id)& Q(request = request.user))
+        c.quantity += 1
+        c.save()
+        user = request.user
+        cart = Cart.objects.filter(user = request.user)
+        for p in cart:
+            value = p.quantity*p.product.discounted_price
+            amount = amount+value
+        totalamount = amount + 40
+        data = {
+            'quantity': c.quantity,
+            'amount': amount,
+            'totalamount': totalamount,
+        }
+        return JsonResponse(data)

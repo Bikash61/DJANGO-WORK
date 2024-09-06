@@ -38,6 +38,8 @@ path('add-to-cart/', views.add_to_cart, name='add_to_cart'),
 path('cart/', views.show_cart, name='showcart'),
 path('checkout/', views.show_cart, name = 'checkout'),
 
+path('pluscart/', views.plus_cart),
+
 
 #Passoword Reset
 path('password-reset/', auth_view.PasswordResetView.as_view(template_name = 'app/password_reset.html', form_class= MyPasswordResetForm),name = 'password_reset'),

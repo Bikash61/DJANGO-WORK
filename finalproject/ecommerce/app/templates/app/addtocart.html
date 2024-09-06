@@ -1,32 +1,35 @@
 {% extends "app/base.html" %}
 {% load static %}
-{% block title %}Add to Cart{% endblock title %}
+{% block title %}Shopping Cart{% endblock title %}
 
 {% block main-content %}
 <div class="container my-5">
     {% if cart %}
-        <div class="row">
-            <h1 class="text-center mb-5">Shopping Cart</h1>
+        <div class="row justify-content-center">
+            <h1 class="text-center mb-5">Your Shopping Cart</h1>
+            
+            <!-- Cart Items Section -->
             <div class="col-sm-8">
-                <div class="card">
+                <div class="card shadow-sm mb-4">
                     <div class="card-body">
-                        <h3>Cart</h3>
+                        <h3 class="mb-4">Cart Items</h3>
                         {% for item in cart %}
-                        <div class="row">
+                        <div class="row align-items-center mb-4">
                             <div class="col-sm-9">
-                                <div>
-                                    <h5>{{ item.product.title }}</h5>
-                                    <p class="mb-2 text-muted small">{{ item.product.description }}</p>
-                                    <div class="my-5">
-                                        <label for="quantity">Quantity:</label>
-                                        <a class="minus-cart btn" pid="{{ item.product.id }}"><i class="fas fa-minus-square fa-lg"></i></a>
-                                        <span id="quantity">{{ item.quantity }}</span>
-                                        <a class="plus-cart btn" pid="{{ item.product.id }}"><i class="fas fa-plus-square fa-lg"></i></a>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <span><strong>Rs.{{ item.product.discounted_price }}</strong></span>
-                                    </div>
+                                <h5 class="mb-2">{{ item.product.title }}</h5>
+                                <p class="text-muted small">{{ item.product.description }}</p>
+                                <div class="d-flex align-items-center">
+                                    <label class="me-3" for="quantity">Quantity:</label>
+                                    <a class="minus-cart btn btn-outline-secondary me-2" pid="{{ item.product.id }}"><i class="fas fa-minus-square fa-lg"></i></a>
+                                    <span id="quantity" class="mx-2">{{ item.quantity }}</span>
+                                    <a class="plus-cart btn btn-outline-secondary ms-2" pid="{{ item.product.id }}"><i class="fas fa-plus-square fa-lg"></i></a>
                                 </div>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <span><strong>Rs.{{ item.product.discounted_price }}</strong></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 text-end">
+                                <a href="#" class="btn btn-danger btn-sm remove-cart" pid="{{ item.product.id }}">Remove</a>
                             </div>
                         </div>
                         <hr class="text-muted">
@@ -35,26 +38,34 @@
                 </div>
             </div>
 
+            <!-- Total Amount Section -->
             <div class="col-sm-4">
-                <div class="card">
+                <div class="card shadow-sm">
                     <div class="card-body">
-                        <h3>The total amount</h3>
+                        <h3 class="mb-4">Order Summary</h3>
                         <ul class="list-group">
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">Amount <span id="amount">Rs.{{ amount }}</span></li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                                <div>
-                                    <strong>Total</strong> <small>(including GST)</small>
-                                </div>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-2">
+                                Subtotal
+                                <span id="amount">Rs.{{ amount }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
+                                <strong>Total (incl. GST)</strong>
                                 <span id="totalamount"><strong>Rs.{{ totalamount }}</strong></span>
                             </li>
                         </ul>
-                        <div class="d-grid"><a href="{% url 'checkout' %}" class="btn btn-primary">Place Order</a></div>
+                        <div class="d-grid mt-4">
+                            <a href="{% url 'checkout' %}" class="btn btn-primary btn-lg">Proceed to Checkout</a>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     {% else %}
-        <h1 class="text-center mb-5">Cart is empty</h1>
+        <div class="text-center">
+            <h1 class="mb-5">Your Cart is Empty</h1>
+            <a href="{% url 'product_list' %}" class="btn btn-secondary">Continue Shopping</a>
+        </div>
     {% endif %}
 </div>
 {% endblock main-content %}

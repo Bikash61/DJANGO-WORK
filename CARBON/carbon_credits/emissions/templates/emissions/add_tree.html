@@ -1,0 +1,12 @@
+{% extends 'emissions/base.html' %}
+
+{% block title %}Add Tree{% endblock %}
+
+{% block content %}
+<h2>Add a New Tree</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Add Tree</button>
+</form>
+{% endblock %}

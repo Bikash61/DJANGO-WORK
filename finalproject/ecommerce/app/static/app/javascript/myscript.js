@@ -32,6 +32,7 @@ $('.plus-cart').click(function(){
             prod_id:id
         },
         success:function(data){
+            console.log("data =", data)
             eml.innerText=data.quantity 
             document.getElementById("amount").innerText=data.amount 
             document.getElementById("totalamount").innerText=data.totalamount

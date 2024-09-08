@@ -1,0 +1,36 @@
+{% load static%}
+<% !DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Coal Mine Emissions{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'mines' %}">Mines</a></li>
+                <li><a href="{% url 'bogs' %}">Bogs</a></li>
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% if user.is_staff %}
+                        <li><a href="{% url 'admin_panel' %}">Admin Panel</a></li>
+                    {% endif %}
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Coal Mine Emissions Project</p>
+    </footer>
+</body>
+</html>

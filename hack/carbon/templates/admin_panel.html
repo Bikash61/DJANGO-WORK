@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Panel{% endblock %}
+
+{% block content %}
+<h1>Admin Panel</h1>
+<h2>Users</h2>
+<ul>
+    {% for user in users %}
+        <li>{{ user.username }} - {{ user.email }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Profiles</h2>
+<ul>
+    {% for profile in profiles %}
+        <li>{{ profile.user.username }} - {{ profile.user.email }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

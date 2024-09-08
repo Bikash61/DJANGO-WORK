@@ -1,0 +1,98 @@
+{% extends 'emissions/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Dashboard</h2>
+
+<h3>Coal Mines and Required Trees</h3>
+<table>
+    <tr>
+        <th>Coal Mine</th>
+        <th>CO2 Emissions (tonnes)</th>
+        <th>Trees Needed</th>
+    </tr>
+    {% for mine in coal_mines_data %}
+    <tr>
+        <td>{{ mine.name }}</td>
+        <td>{{ mine.emissions }}</td>
+        <td>
+            {% for tree in mine.trees %}
+                {{ tree.trees_needed }} {{ tree.name }} trees
+                {% if not forloop.last %}<br>{% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Coal Mines CO2 Emissions</h3>
+<canvas id="emissionChart"></canvas>
+
+<h3>Trees CO2 Absorption</h3>
+<canvas id="treeChart"></canvas>
+
+
+    <script>
+        // Data for Emission Chart
+        const emissionData = {
+            labels: [{% for mine in coal_mines_data %}'{{ mine.name }}',{% endfor %}],
+            datasets: [{
+                label: 'CO2 Emissions (tonnes)',
+                data: [{% for mine in coal_mines_data %}{{ mine.emissions }},{% endfor %}],
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        };
+    
+        const emissionConfig = {
+            type: 'bar',
+            data: emissionData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+    
+        // Data for Tree Chart
+        const treeData = {
+            labels: [{% for tree in trees %}'{{ tree.name }}',{% endfor %}],
+            datasets: [{
+                label: 'CO2 Absorption (tonnes per year)',
+                data: [{% for tree in trees %}{{ tree.carbon_absorption_rate }},{% endfor %}],
+                backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+    
+        const treeConfig = {
+            type: 'bar',
+            data: treeData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+    
+        // Render the charts
+        const emissionChart = new Chart(
+            document.getElementById('emissionChart'),
+            emissionConfig
+        );
+    
+        const treeChart = new Chart(
+            document.getElementById('treeChart'),
+            treeConfig
+        );
+    </script>
+    
+
+{% endblock %}

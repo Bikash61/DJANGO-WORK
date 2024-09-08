@@ -5,6 +5,8 @@
 <h1>{{page_title}}</h1>
 {% include "snippets/welcome-user-msg.html" %}
 
-Page Vist : {{ pagevisit}}
+<p>Page Vist : {{ page_visit_count}}<p/>
+<p>Percent ; {{percent}}</p>
+<p>Total Page visit ; {{total_page_visit_count}}</p>
 {{ queryset }}
 {% endblock content %}

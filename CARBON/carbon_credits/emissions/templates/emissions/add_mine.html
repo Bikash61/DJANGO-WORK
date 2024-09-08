@@ -1,0 +1,12 @@
+{% extends 'emissions/base.html' %}
+
+{% block title %}Add Coal Mine{% endblock %}
+
+{% block content %}
+<h2>Add a New Coal Mine</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Add Mine</button>
+</form>
+{% endblock %}

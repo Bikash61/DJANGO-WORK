@@ -49,7 +49,7 @@ def feed(request):
     else:
         return render(request, 'guest_feed.html', {'posts': posts})
     
-# View for Creating a Post
+
 @login_required
 def post_create(request):
     if request.method == 'POST':

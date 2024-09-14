@@ -135,7 +135,7 @@ def change_username(request):
         form = UsernameChangeForm(instance=request.user)
     return render(request, 'change_username.html', {'form': form})
 
-
+# View for searching users
 def search_users(request):
     query = request.GET.get('q', '')
     users = User.objects.filter(

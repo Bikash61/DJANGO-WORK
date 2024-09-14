@@ -63,7 +63,7 @@ def post_create(request):
         form = PostForm()
     return render(request, 'post_create.html', {'form': form})
 
-# View for Deleting a Post
+
 @login_required
 def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk, user=request.user)

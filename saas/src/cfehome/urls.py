@@ -16,7 +16,7 @@ Including another URLconf
 """
 
 
-#This is a urls 
+
 from django.contrib import admin
 from django.urls import path
 
